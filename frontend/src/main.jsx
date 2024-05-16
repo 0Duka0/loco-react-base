@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Routing from './routing';
-import { BrowserRouter } from 'react-router-dom';
+import {HashRouter} from 'react-router-dom';
 import {Link} from "react-router-dom";
 
 const App = () => {
@@ -29,8 +29,8 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <App />
     <Routing />
-  </BrowserRouter>
+  </HashRouter>
 );

@@ -1,36 +1,29 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+// import Bugsnag from '@bugsnag/js';
+// import BugsnagPluginReact from '@bugsnag/plugin-react';
+import {createRoot} from 'react-dom/client';
 import Routing from './routing';
-import {HashRouter} from 'react-router-dom';
-import {Link} from "react-router-dom";
+import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
+const queryClient = new QueryClient();
 
-const App = () => {
-  return (
-    <div className="container">
-      <nav>
-        <ul>
-          <Link to="/" className="list">
-            Home
-          </Link>
-          <Link to="/test" className="list">
-            Test
-          </Link>
-          <Link to="/live" className="list">
-            Live course
-          </Link>
-          <Link to="/contact" className="list">
-            Contact
-          </Link>
-        </ul>
-      </nav>
-    </div>
-  )
-}
+/**
+ * Bugsnag 初期設定
+ * @return {Object} Bugsnag tag
+ */
+// function initBugsnag() {
+//   Bugsnag.start({
+//     apiKey: '',
+//     plugins: [new BugsnagPluginReact()],
+//     releaseStage: process.env.ENV,
+//   });
+//   return Bugsnag.getPlugin('react').createErrorBoundary(React);
+// }
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
+const root = createRoot(document.getElementById('my_service'));
 root.render(
-  <HashRouter>
-    <App />
-    <Routing />
-  </HashRouter>
+    <QueryClientProvider client={queryClient}>
+      <Routing />
+    </QueryClientProvider>,
 );
